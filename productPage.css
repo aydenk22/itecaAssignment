@@ -1,0 +1,20 @@
+.productImg{
+   width: 40%;
+   margin-right: 50px;
+}
+.imgGroup{
+   display: flex;
+   justify-content: space-between;
+}
+.smallImgCol{
+   flex-basis: 24%;
+   cursor: pointer;
+}
+.productSection{
+   display: flex;
+   margin-top: 20px;
+}
+.productDetails{
+   width: 50%;
+   padding-top: 30px;  
+}

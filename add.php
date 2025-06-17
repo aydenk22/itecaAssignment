@@ -15,6 +15,7 @@ include('userdb.php')
       Description: <input type="text" name="description"><br>
       Price: <input type="number" name="price" min="0.00" step="0.01"><br>
       Thumbnail: <input type="file" name="thumbnail" id='thumbnail'><br>
+      Images: <input type="file" name="images" id="images"><br>
       <input type="submit" value="Submit">
    </form>
 </body>
@@ -59,7 +60,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST'){
    $price = $_POST['price'];
    $thumbnail = $fileDestination;
 
-   $sql = "INSERT INTO products (name, description, price, thumbnail) VALUES ('$name', '$description', '$price', '$thumbnail')";
+   $sql = "INSERT INTO products (name, description, price, thumbnail, images) VALUES ('$name', '$description', '$price', '$thumbnail')";
    mysqli_query($conn, $sql);
    echo("Successfully added");
    

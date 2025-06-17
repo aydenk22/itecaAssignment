@@ -24,7 +24,7 @@
    <section class="midSection">
       <div class="categoryBar">
          <ul class="categoryList">
-            <li>Cat 1</li>
+            <li><a href="">Cat 1</a></li>
             <li>Cat 2</li>
             <li>Cat 3</li>
             <li>Cat 4</li>
@@ -38,7 +38,29 @@
          </div>
        <div class="products" id="products">
          <?php
-         include('featured.php');
+
+         include('userdb.php');
+
+
+         $sql = 'SELECT * FROM products ORDER BY RAND() LIMIT 3';
+         $result = mysqli_query($conn, $sql);
+
+         $ids = [];
+
+         foreach($result as $row){
+            
+            echo('<div class="productContainer" id="p1Container">');
+            echo('<a href=productPage.php?id='.$row['id'].'>');
+            echo('<img id="p1Img" src="'.$row["thumbnail"].'" alt="">');
+            echo('<div class="description">');
+            echo('<h5 id="p1Name">'.$row['name'].'</h5>');
+            echo('<h4 id="p1Price">R'.$row['price'].'</h4>');
+            echo('</div>');
+            echo('</a>');
+            echo('<button class="addToCartButton"><i class="bi bi-cart2"></i></button>');
+            echo('</div>');
+
+         }
          ?>
        </div>
       </div>
