@@ -32,6 +32,9 @@ a{
    list-style: none;
    padding: 0 20px;
 }
+.navBar i{
+   color: rgb(254, 252, 251);
+}
 .midSection{
    display: flex;
    background-color: rgb(254, 252, 251);
