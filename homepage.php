@@ -24,11 +24,11 @@
    <section class="midSection">
       <div class="categoryBar">
          <ul class="categoryList">
-            <li><a href="">Cat 1</a></li>
-            <li>Cat 2</li>
-            <li>Cat 3</li>
-            <li>Cat 4</li>
-            <li>Cat 5</li>
+            <li><a href="">Clothing & Shoes</a></li>
+            <li><a href="">Tools</a></li>
+            <li><a href="">Electronics</a></li>
+            <li><a href="">Books</a></li>
+            <li><a href="">Services</a></li>
          </ul>
       </div>
       

@@ -43,6 +43,10 @@ a{
    width: 20%;
    border: 1px solid rgb(85,80,92);
 }
+.categoryList li{
+   list-style-type: none;
+   padding: 0;
+}
 .featuredProducts{
    width: 100%;
 }
