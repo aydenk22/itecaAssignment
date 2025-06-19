@@ -2,7 +2,7 @@
 
 include('userdb.php');
 
-$productID = $_GET['id'];
+$productID = $_GET['PID'];
 $query = "SELECT * FROM products WHERE id = " . $productID;
 $result = mysqli_query($conn, $query);
 $row = mysqli_fetch_assoc($result);

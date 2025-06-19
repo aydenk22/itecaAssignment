@@ -8,6 +8,7 @@
    <title>Home</title>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
    <link rel="stylesheet" href="homepage.css">
+   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -15,8 +16,9 @@
       <a href="" class="logo">Logo</a>
       <div>
          <ul class="navBar">
-            <li><a href="homepage.html">Home</a></li>
-            <li><a href="cart.html"><i class="bi bi-bag"></i></a></li>
+            <li><a href="add.php">Sell a product?</a></li>
+            <li><a href="homepage.php">Home</a></li>
+            <li><a href="cart.php"><i class="bi bi-bag"></i></a></li>
          </ul>
       </div>
    </section>
@@ -48,10 +50,12 @@
          $ids = [];
 
          foreach($result as $row){
+
+            $thumbnail = json_decode($row['images'], true);
             
             echo('<div class="productContainer" id="p1Container">');
-            echo('<a href=productPage.php?id='.$row['id'].'>');
-            echo('<img id="p1Img" src="'.$row["thumbnail"].'" alt="">');
+            echo('<a href=productPage.php?PID='.$row['id'].'>');
+            echo('<img id="p1Img" src="'.$thumbnail[0].'" alt="">');
             echo('<div class="description">');
             echo('<h5 id="p1Name">'.$row['name'].'</h5>');
             echo('<h4 id="p1Price">R'.$row['price'].'</h4>');
