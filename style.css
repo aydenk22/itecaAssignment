@@ -33,7 +33,9 @@ body{
 }
 .navBar li{
    list-style: none;
-   padding: 0 20px;
+   margin: 0 15px;
+   font-size: 18px;
+   padding: 5px;
 }
 .navBar i{
    color: rgb(254, 252, 251);
@@ -81,8 +83,8 @@ body{
 .productContainer{
    width: 23%;
    min-width: 250px;
-   padding: 10px 12px;
-   margin: 10px;
+   padding: 20px;
+   margin: 20px;
    border: 1px solid rgb(85,80,92);
    border-radius: 25px;
    text-align: center;

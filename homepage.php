@@ -44,7 +44,7 @@
          include('userdb.php');
 
 
-         $sql = 'SELECT * FROM products ORDER BY RAND() LIMIT 3';
+         $sql = 'SELECT * FROM products ORDER BY RAND() LIMIT 6';
          $result = mysqli_query($conn, $sql);
 
          $ids = [];

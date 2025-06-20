@@ -9,13 +9,17 @@ include('userdb.php')
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
 </head>
+
 <body>
    <form action="add.php" method='post' enctype="multipart/form-data"><br>
-     Name: <input type="text" name="name"><br>
-      Description: <input type="text" name="description"><br>
-      Price: <input type="number" name="price" min="0.00" step="0.01"><br>
-      <label for="catergory">Category: </label>
-      <select name="catergory" id="catergory">
+      <label for="name">Name: </label>
+      <input type="text" name="name"><br>
+      <label for="description">Description: </label>
+      <input type="text" name="description"><br>
+      <label for="price">Price: </label>
+      <input type="number" name="price" min="0.00" step="0.01"><br>
+      <label for="category">Category: </label>
+      <select name="category" id="category">
          <option value="1">Clothing & Shoes</option>
          <option value="2">Tools</option>
          <option value="3">Electronics</option>
@@ -29,13 +33,10 @@ include('userdb.php')
 </html>
 
 <?php
-
-
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
    $images = $_FILES['images'];
    $imagesName = $images['name'];
    $newImages = array();
-
 
    for ($i = 0; $i < count($imagesName); $i++) {
       $fileTmpName = $images['tmp_name'][$i];
@@ -76,14 +77,11 @@ $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
 $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
 $price = $_POST['price'];
 $newImages = json_encode($newImages);
-$category = $_POST['catergory'];
+$category = $_POST['category'];
 $category = (int) $category;
 $sql = "INSERT INTO products (name, description, price, category_id, images) VALUES ('$name', '$description', '$price', '$category', '$newImages')";
 mysqli_query($conn, $sql);
 echo "Successfully added";
 
-} else {
-   echo "There was an error with your request. Please try again.";
 }
-
 
