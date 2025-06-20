@@ -43,7 +43,6 @@
 
          include('userdb.php');
 
-
          $sql = 'SELECT * FROM products ORDER BY RAND() LIMIT 6';
          $result = mysqli_query($conn, $sql);
 
@@ -51,11 +50,11 @@
 
          foreach($result as $row){
 
-            $thumbnail = json_decode($row['images'], true);
+            $images = json_decode($row['images'], true);
             
             echo('<div class="productContainer" id="p1Container">');
             echo('<a href=productPage.php?PID='.$row['id'].'>');
-            echo('<img id="p1Img" src="'.$thumbnail[0].'" alt="">');
+            echo('<img id="p1Img" src="'.$images[0].'" alt="">');
             echo('<div class="description">');
             echo('<h5 id="p1Name">'.$row['name'].'</h5>');
             echo('<h4 id="p1Price">R'.$row['price'].'</h4>');
