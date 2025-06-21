@@ -23,9 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
       if (password_verify($password, $user["password"])){
          $_SESSION['loggedin'] = true;
          $_SESSION['email'] = $email;
+         $_SESSION['userID'] = $user['id'];
 
          header("Location: homepage.php");
-         exit();
       } else{
          echo "Error: Incorrect password";
       }

@@ -92,6 +92,11 @@ body{
    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.2);
    
 }
+.productContainer:hover{
+   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.4);
+   transform: scale(1.05);
+   transition: all 0.3s ease-in-out;
+}
 .productContainer img {
    width: 100%;
    border-radius: 20px;
@@ -137,4 +142,42 @@ body{
 .smallImgCol{
    flex-basis: 24%;
    cursor: pointer;
+}
+
+#productDetails .singleProductDetails{
+   width: 50%;
+   padding-top: 30px;
+}
+
+#productDetails h4{
+   padding: 40px 0 20px 0;
+}
+#productDetails h2{
+   font-size: 26px;
+}
+
+#productDetails .singleProductDetails input{
+   width: 40px;
+   height: 30px;
+   padding-left: 10px;
+   margin-top: 10px;
+   font-size: 16px;
+   margin-right: 10px;
+}
+
+.singleProductDetails button{
+   padding: 10px 20px;
+   border-radius: 40px;
+   background-color: rgb(85,80,92);
+   color: rgb(254, 252, 251);
+   border: none;
+   cursor: pointer;
+}
+
+#productDetails .singleProductDetails button:hover{
+   background-color: rgb(0,23,31);
+}
+
+#productDetails .singleProductDetails span{
+   line-height: 25px;
 }

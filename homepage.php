@@ -1,4 +1,7 @@
-
+<?php
+session_start();
+include('userdb.php');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,8 +19,8 @@
       <a href="" class="logo">Logo</a>
       <div>
          <ul class="navBar">
-            <li><a href="add.php">Sell a product?</a></li>
             <li><a href="homepage.php">Home</a></li>
+            <li><a href="add.php">Sell a product?</a></li>
             <li><a href="cart.php"><i class="bi bi-bag"></i></a></li>
          </ul>
       </div>
@@ -40,8 +43,6 @@
          </div>
        <div class="products" id="products">
          <?php
-
-         include('userdb.php');
 
          $sql = 'SELECT * FROM products ORDER BY RAND() LIMIT 6';
          $result = mysqli_query($conn, $sql);
@@ -71,6 +72,9 @@
       </div>
    </section>
    
+   <footer class="footer">
+
+   </footer>
 
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
    <script src="homepage.js"></script>
