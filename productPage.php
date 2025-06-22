@@ -64,6 +64,7 @@ $category = $categoryRow['name'];
          <label for="quantity">Quantiy: </label>
          <input type="number" value="1" min="1" max="10" class="quantity" name="quantity" id="quantity">
          <button><i class="bi bi-cart2"></i>Add to Cart</button>
+         <input type="submit" value="Add to Cart" class="addToCartButton" id="addToCartButton">
          <h4>Product Details</h4>
          <span><?php echo($row['description']) ?></span>
       </div>
