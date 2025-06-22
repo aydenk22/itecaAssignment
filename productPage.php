@@ -64,12 +64,12 @@ $category = $categoryRow['name'];
          <label for="quantity">Quantiy: </label>
          <input type="number" value="1" min="1" max="10" class="quantity" name="quantity" id="quantity">
          <button><i class="bi bi-cart2"></i>Add to Cart</button>
-         <input type="submit" value="Add to Cart" class="addToCartButton" id="addToCartButton">
          <h4>Product Details</h4>
          <span><?php echo($row['description']) ?></span>
       </div>
       
    </section> <br><br>
+
    <div class="featuredProducts">
          <div class="productsTitle" >
          <h2 style="background-color: rgb(85,80,92); color: rgb(254, 252, 251); padding: 20px;">Featured Products</h2>
@@ -116,66 +116,13 @@ $category = $categoryRow['name'];
          smallImg[3].onclick = function(){
             mainImg.src = smallImg[3].src;
          }
-
-         var addToCartButton = document.getElementById("addToCartButton");
-
-         addToCartButton.onclick = function() {
-
-            alert("Item added to cart");
-
-            var productID = <?php $productID; ?>;
-            var quantity = document.getElementById("quantity").value;
-
-            <?php 
-
-            $id = 16; // Replace with the actual user ID from session or database
-
-            $query = "SELECT * FROM user WHERE id = '$id'";
-            $result = mysqli_query($conn, $query);
-            $user = mysqli_fetch_assoc($result);
-
-            if ($user['cartID'] == null || $user['cartID'] == ''){
-               $cart = uniqid();
-
-               $query = "UPDATE users SET cartID = '$cart' WHERE id = '$id'";
-               mysqli_query($conn, $query);
-               $query = "INSERT INTO cart (id, userid) VALUES ('$cart', '$id')";
-               mysqli_query($conn, $query);
-
-               echo "Item added to cart";
-               }
-            else {
-               echo "Item not added";
-            }
-
-            ?>
-            
-         }
          
       </script>
 
       <script src="script.js"></script>
-</body>
+
+   </body>
 </html>
 
 <?php
-// if (isset($_POST['addToCartButton'])) {
-    
-//     $id = $_SESSION['userID'];
-
-//     $query = "SELECT * FROM user WHERE id = '$id'";
-//     $result = mysqli_query($conn, $query);
-//     $user = mysqli_fetch_assoc($result);
-
-//     if ($user['cartID'] == null || $user['cartID'] == ''){
-//       $cart = uniqid();
-
-//       $query = "INSERT INTO users (cartID) WHERE id = '$id'";
-//       mysqli_query($conn, $query);
-//       $query = "INSERT INTO cart (id, userid) VALUES ('$cart', '$id')";
-//       mysqli_query($conn, $query);
-
-//       echo "Item added to cart";
-//     }
-//    }
 
