@@ -21,7 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
       $user = mysqli_fetch_assoc($data);
 
       if (password_verify($password, $user["password"])){
-         $_SESSION['loggedin'] = true;
          $_SESSION['email'] = $email;
          $_SESSION['userID'] = $user['id'];
 

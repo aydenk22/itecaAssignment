@@ -16,7 +16,7 @@ include('userdb.php');
 <body>
 
    <section class="header">
-      <a href="" class="logo">Logo</a>
+      <a href="" class="logo">Shop-A-Lot</a>
       <div>
          <ul class="navBar">
             <li><a href="homepage.php">Home</a></li>

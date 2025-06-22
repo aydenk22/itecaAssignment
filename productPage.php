@@ -2,14 +2,14 @@
 session_start();
 include('userdb.php');
 
-$productID = $_GET['PID'];
-$query = "SELECT * FROM products WHERE id = " . $productID;
+$itemID = $_GET['PID'];
+$query = "SELECT * FROM products WHERE id = " . $itemID;
 $result = mysqli_query($conn, $query);
-$row = mysqli_fetch_assoc($result);
+$item = mysqli_fetch_assoc($result);
 
-$images = json_decode($row['images'], true);
+$images = json_decode($item['images'], true);
 
-$query = "SELECT * FROM categories WHERE id = " . $row['category_id'];
+$query = "SELECT * FROM categories WHERE id = " . $item['category_id'];
 $result = mysqli_query($conn, $query);
 $categoryRow = mysqli_fetch_assoc($result);
 $category = $categoryRow['name'];
@@ -27,7 +27,7 @@ $category = $categoryRow['name'];
 </head>
 <body>
    <section class="header">
-      <a href="homepage.php" class="logo">Logo</a>
+      <a href="homepage.php" class="logo">Shop-A-Lot</a>
       <div>
          <ul class="navBar">
             <li><a href="homepage.php">Home</a></li>
@@ -60,15 +60,77 @@ $category = $categoryRow['name'];
 
       <div class="singleProductDetails">
          <h4><?php echo($category) ?></h4>
-         <h2>R<?php echo($row['price']) ?></h2>
-         <label for="quantity">Quantiy: </label>
+         <h2>R<?php echo($item['price']) ?></h2>
+         <label for="quantity">Quantity: </label>
          <input type="number" value="1" min="1" max="10" class="quantity" name="quantity" id="quantity">
-         <button><i class="bi bi-cart2"></i>Add to Cart</button>
+         <!-- <button><i class="bi bi-cart2"></i>Add to Cart</button> -->
+          <form method="post">
+            <input type="submit" value="Add to Cart" class="addToCartButton" name="addToCartButton" id="addToCartButton">
+          </form>
+         
          <h4>Product Details</h4>
-         <span><?php echo($row['description']) ?></span>
+         <span><?php echo($item['description']) ?></span>
       </div>
       
    </section> <br><br>
+
+   <?php
+
+   if (isset($_POST['addToCartButton'])){
+
+         $quantity = '<script>document.getElementById("quantity").value</script>';
+         $itemID = $_GET['PID'];
+
+         $query = "SELECT * FROM users WHERE id = $_SESSION[userID]";
+         $result = mysqli_query($conn, $query);
+         $user = mysqli_fetch_assoc($result);
+         $userID = $user['id'];
+         $userCart = $user['cartID'];
+
+         if ($userCart == null || $userCart == ''){
+            $cart = uniqid('CART_', true);
+            $query = "UPDATE users SET cartID = '$cart' WHERE id = $userID";
+            mysqli_query($conn, $query);
+
+            $cartItems = array();
+            array_push($cartItems, $itemID);
+            $cartItems = json_encode($cartItems);
+
+            $query = "INSERT INTO cart (id, userID, cartItems) VALUES ('$cart', '$userID', '$cartItems')";
+            mysqli_query($conn, $query);
+
+            $itemBundlePrice = $item['price'] * $quantity;
+            $query = "INSERT INTO itemBundle (cartID, itemID, quantity, bundlePrice) VALUES ('$cart', '$itemID', '$quantity', '$itemBundlePrice')";
+            mysqli_query($conn, $query);
+            echo "<script>alert('Item added to cart');</script>";
+            exit();
+         }
+         else {
+
+            echo "<script>alert('Cart already exists');</script>";
+            exit();
+
+            // $query = "SELECT * FROM cart WHERE id = '$userCart'";
+            // $result = mysqli_query($conn, $query);
+            // $cart = mysqli_fetch_assoc($result);
+            // $cartItems = json_decode($cart['cartItems'], true);
+
+            // foreach ($items as $item){
+            //    if ($item == $itemID){
+            //       echo "script>alert('Item already in cart');</script>";
+            //       exit();
+               
+            // } else{
+            //    array_push($cartItems, $itemID);
+            //    $cartItems = json_encode($cartItems);
+            // }
+         //}
+         
+      }
+      } 
+         
+
+   ?>
 
    <div class="featuredProducts">
          <div class="productsTitle" >
@@ -121,8 +183,12 @@ $category = $categoryRow['name'];
 
       <script src="script.js"></script>
 
+      <?php 
+
+      
+      ?>
+
+
    </body>
 </html>
-
-<?php
 
