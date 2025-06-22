@@ -1,4 +1,4 @@
-/* *{
+*{
    scroll-behavior: smooth;
    margin: 3px;
    padding: 0x;
@@ -6,7 +6,7 @@
    
 }
 
-
+/* Homepage */
 
 body{
    background-color: rgb(254, 252, 251);
@@ -122,6 +122,7 @@ body{
    align-items: center;
 }
 
+/* Product Details Page */
 
 #productDetails{
    display: flex;
@@ -179,4 +180,4 @@ body{
 
 #productDetails .singleProductDetails span{
    line-height: 25px;
-} */
+}
