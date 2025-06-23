@@ -6,6 +6,7 @@ $itemID = $_GET['PID'];
 $query = "SELECT * FROM products WHERE id = " . $itemID;
 $result = mysqli_query($conn, $query);
 $item = mysqli_fetch_assoc($result);
+$price = $item['price'];
 
 $images = json_decode($item['images'], true);
 
@@ -32,6 +33,7 @@ $category = $categoryRow['name'];
          <ul class="navBar">
             <li><a href="homepage.php">Home</a></li>
             <li><a href="add.php">Sell a product?</a></li>
+            <li><a href="account.php"><i class="bi bi-person"></i></a></li>
             <li><a href="cart.php"><i class="bi bi-bag"></i></a></li>
          </ul>
       </div>
@@ -62,9 +64,8 @@ $category = $categoryRow['name'];
          <h4><?php echo($category) ?></h4>
          <h2>R<?php echo($item['price']) ?></h2>
          <label for="quantity">Quantity: </label>
-         <input type="number" value="1" min="1" max="10" class="quantity" name="quantity" id="quantity">
-         <!-- <button><i class="bi bi-cart2"></i>Add to Cart</button> -->
-          <form method="post">
+         <form method="post">
+            <input type="number" value="1" min="1" max="10" class="quantity" name="quantity" id="quantity">
             <input type="submit" value="Add to Cart" class="addToCartButton" name="addToCartButton" id="addToCartButton">
           </form>
          
@@ -78,8 +79,12 @@ $category = $categoryRow['name'];
 
    if (isset($_POST['addToCartButton'])){
 
-         $quantity = '<script>document.getElementById("quantity").value</script>';
+         // $quantity = '<script>document.getElementById("quantity").value</script>';
+         // $quantity = intval($quantity);
+
+         $quantity = $_POST['quantity'];
          $itemID = $_GET['PID'];
+         $itemID = intval($itemID);
 
          $query = "SELECT * FROM users WHERE id = $_SESSION[userID]";
          $result = mysqli_query($conn, $query);
@@ -99,35 +104,47 @@ $category = $categoryRow['name'];
             $query = "INSERT INTO cart (id, userID, cartItems) VALUES ('$cart', '$userID', '$cartItems')";
             mysqli_query($conn, $query);
 
-            $itemBundlePrice = $item['price'] * $quantity;
-            $query = "INSERT INTO itemBundle (cartID, itemID, quantity, bundlePrice) VALUES ('$cart', '$itemID', '$quantity', '$itemBundlePrice')";
+            $itemBundlePrice = $price * $quantity;
+            $query = "INSERT INTO item_bundle (cartID, itemID, quantity, bundlePrice) VALUES ('$cart', '$itemID', '$quantity', '$itemBundlePrice')";
             mysqli_query($conn, $query);
             echo "<script>alert('Item added to cart');</script>";
-            exit();
          }
-         else {
+         else if ($userCart != null || $userCart != ''){
 
-            echo "<script>alert('Cart already exists');</script>";
-            exit();
+            $query = "SELECT * FROM cart WHERE userID = $userID";
+            $result = mysqli_query($conn, $query);
+            $cart = mysqli_fetch_assoc($result);
+            $userCartID = $cart['id'];
+            $cartItems = $cart['cartItems'];
 
-            // $query = "SELECT * FROM cart WHERE id = '$userCart'";
-            // $result = mysqli_query($conn, $query);
-            // $cart = mysqli_fetch_assoc($result);
-            // $cartItems = json_decode($cart['cartItems'], true);
+            $cartItems = json_decode($cartItems ,true);
 
-            // foreach ($items as $item){
-            //    if ($item == $itemID){
-            //       echo "script>alert('Item already in cart');</script>";
-            //       exit();
+            foreach ($cartItems as $i){
+               if ($i == $itemID){
+                  echo "<script>alert('Item already in cart');</script>";
+                  // header("Location: productPage.php?PID=$itemID");
+                  break;
+               }
+            }
+
+               $itemBundlePrice = $price * $quantity;
+               array_push($cartItems, $itemID);
+               $cartItems = json_encode($cartItems, true);
+               $query = "UPDATE cart SET cartItems = '$cartItems' WHERE id = '$cart[id]'";
+               mysqli_query($conn, $query);
+
+               $query = "INSERT INTO item_bundle (cartID, itemID, quantity, bundlePrice) VALUES ('$userCartID', '$itemID', '$quantity', '$itemBundlePrice')";
+               mysqli_query($conn, $query);
+
+               $query = "UPDATE cart SET total = total + '$itemBundlePrice' WHERE id = '$userCartID'";
+               mysqli_query($conn, $query);
+               echo "<script>alert('Item added to cart');</script>";
                
-            // } else{
-            //    array_push($cartItems, $itemID);
-            //    $cartItems = json_encode($cartItems);
-            // }
-         //}
-         
+            }
+            
+           
+            
       }
-      } 
          
 
    ?>

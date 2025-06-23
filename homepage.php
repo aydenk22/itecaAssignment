@@ -16,11 +16,12 @@ include('userdb.php');
 <body>
 
    <section class="header">
-      <a href="" class="logo">Shop-A-Lot</a>
+      <a href="homepage.php" class="logo">Shop-A-Lot</a>
       <div>
          <ul class="navBar">
             <li><a href="homepage.php">Home</a></li>
             <li><a href="add.php">Sell a product?</a></li>
+            <li><a href="account.php"><i class="bi bi-person"></i></a></li>
             <li><a href="cart.php"><i class="bi bi-bag"></i></a></li>
          </ul>
       </div>
