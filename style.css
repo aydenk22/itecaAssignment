@@ -204,3 +204,10 @@ body{
 #cart table img{
    width: 70px;
 }
+
+/* Account page */
+
+#accountSection .h2{
+   text-align: center;
+   color: blue;
+}

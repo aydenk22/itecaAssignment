@@ -7,10 +7,12 @@ include('userdb.php')
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+   <title>Shop-A-Lot - SignUp</title>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <form action="signup.php" method="post"><br>
+   <form action="signup.php" method="post" class="signupForm" id="signupForm"><br>
       Name: <input type="text" name="name"><br>
       Surname: <input type="text" name="surname"><br>
       Email: <input type="email" name="email"><br>
@@ -19,7 +21,7 @@ include('userdb.php')
       <input type="submit" value="Sign-Up">
    </form>
    Already have an account?
-   <a href="login.php">Login</a>
+   <a href="index.php">Login</a>
 </body>
 </html>
 

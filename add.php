@@ -7,7 +7,7 @@ include('userdb.php')
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+   <title>Shop-A-Lot - Sell a product</title>
    <link rel="stylesheet" href="style.css">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
@@ -20,13 +20,15 @@ include('userdb.php')
          <ul class="navBar">
             <li><a href="homepage.php">Home</a></li>
             <li><a href="add.php">Sell a product?</a></li>
+            <li><a href="logout.php">Logout</a></li>
             <li><a href="account.php"><i class="bi bi-person"></i></a></li>
             <li><a href="cart.php"><i class="bi bi-bag"></i></a></li>
          </ul>
       </div>
    </section>
 
-   <form action="add.php" method='post' enctype="multipart/form-data"><br>
+   <div class="formContainer">
+      <form action="add.php" method='post' enctype="multipart/form-data" class="addForm" id="addForm" name="addForm"><br>
       <label for="name">Name: </label>
       <input type="text" name="name"><br>
       <label for="description">Description: </label>
@@ -42,8 +44,12 @@ include('userdb.php')
          <option value="5">Services</option>
       </select> <br>
       Images: <input type="file" name="images[]" id="images" multiple><br>
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit" for='addForm'>
    </form>
+   
+   </div>
+
+   
 </body>
 </html>
 

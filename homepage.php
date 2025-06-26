@@ -21,6 +21,7 @@ include('userdb.php');
          <ul class="navBar">
             <li><a href="homepage.php">Home</a></li>
             <li><a href="add.php">Sell a product?</a></li>
+            <li><a href="logout.php">Logout</a></li>
             <li><a href="account.php"><i class="bi bi-person"></i></a></li>
             <li><a href="cart.php"><i class="bi bi-bag"></i></a></li>
          </ul>
@@ -62,7 +63,6 @@ include('userdb.php');
             echo('<h4 id="p1Price">R'.$row['price'].'</h4>');
             echo('</div>');
             echo('</a>');
-            echo('<button class="addToCartButton"><i class="bi bi-cart2"></i></button>');
             echo('</div>');
 
          }

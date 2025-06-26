@@ -22,7 +22,7 @@ $category = $categoryRow['name'];
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+   <title>Shop-A-Lot - Products</title>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
    <link rel="stylesheet" href="style.css">
 </head>
@@ -33,6 +33,7 @@ $category = $categoryRow['name'];
          <ul class="navBar">
             <li><a href="homepage.php">Home</a></li>
             <li><a href="add.php">Sell a product?</a></li>
+            <li><a href="logout.php">Logout</a></li>
             <li><a href="account.php"><i class="bi bi-person"></i></a></li>
             <li><a href="cart.php"><i class="bi bi-bag"></i></a></li>
          </ul>
@@ -119,14 +120,18 @@ $category = $categoryRow['name'];
 
             $cartItems = json_decode($cartItems ,true);
 
+            $isFound = False;
+
             foreach ($cartItems as $i){
                if ($i == $itemID){
+                  $isFound = True;
                   echo "<script>alert('Item already in cart');</script>";
                   // header("Location: productPage.php?PID=$itemID");
                   break;
                }
             }
 
+            if ($isFound == False){
                $itemBundlePrice = $price * $quantity;
                array_push($cartItems, $itemID);
                $cartItems = json_encode($cartItems, true);
@@ -139,6 +144,9 @@ $category = $categoryRow['name'];
                $query = "UPDATE cart SET total = total + '$itemBundlePrice' WHERE id = '$userCartID'";
                mysqli_query($conn, $query);
                echo "<script>alert('Item added to cart');</script>";
+            }
+
+               
                
             }
             
