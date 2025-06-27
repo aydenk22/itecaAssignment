@@ -56,11 +56,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
          if ($row['isAdmin'] != 0){
             $_SESSION['isAdmin'] = true;
+            header("Location: adminPanel.php");
          } else {
             $_SESSION['isAdmin'] = false;
+            header("Location: homepage.php");
          }
-
-         header("Location: homepage.php");
       } else{
          echo "Error: Incorrect password";
       }

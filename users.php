@@ -3,25 +3,9 @@
 include('userdb.php');
 session_start();
 
-$userCount = 0;
-$orderCount = 0;
-$productCount = 0;
-$revenue = 0;
-
 $query = "SELECT * FROM users";
 $result = mysqli_query($conn, $query);
 $userRows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-foreach ($userRows as $row) {
-    $userCount++;
-}
-
-$query = "SELECT * FROM orders";
-$result = mysqli_query($conn, $query);
-$orderRows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-foreach ($orderRows as $row) {
-    $orderCount++;
-}
 
 ?>
 
@@ -63,68 +47,58 @@ foreach ($orderRows as $row) {
          </div>
       </div>
 
-      <h3 class="iName">Dashboard</h3>
+      <h3 class="iName">Tables</h3>
 
       <div class="values">
-         <div class="valueBox">
-            <i class="bi bi-people-fill"></i>
-            <div>
-               <h3><?php echo $userCount ?></h3>
-               <span>Users</span>
-            </div>
-         </div>
-         <div class="valueBox">
-            <i class="bi bi-cart2"></i>
-            <div>
-               <h3><?php echo $orderCount ?></h3>
-               <span>Orders</span>
-            </div>
-         </div>
-         <div class="valueBox">
-            <i class="bi-card-list"></i>
-            <div>
-               <h3>215,542</h3>
-               <span>Products Sold</span>
-            </div>
-         </div>
-         <div class="valueBox">
-            <i class="bi bi-piggy-bank"></i>
-            <div>
-               <h3>R677.89</h3>
-               <span>Revenue</span>
-            </div>
-         </div>
+         
       </div>
 
-      <div class="board">
+      <h3>Users</h3>
+
+      <div class="users">
          <table width="100%">
             <thead>
                <tr>
+                  <td>ID</td>
                   <td>Name</td>
-                  <td>Title</td>
-                  <td>Role</td>
+                  <td>Email</td>
+                  <td>Phone Number</td>
                </tr>
             </thead>
             <tbody>
+
+               <?php
+               if ($userRows) {
+                  foreach ($userRows as $row) {
+                     echo "<tr>";
+                     echo "<td class='id'>" . htmlspecialchars($row['id']) . "</td>";
+                     echo "<td class='name'>" . htmlspecialchars($row['name']) . "</td>";
+                     echo "<td class='email'>" . htmlspecialchars($row['email']) . "</td>";
+                     echo "<td class='phone'>" . htmlspecialchars($row['phoneNumber']) . "</td>";
+                     echo "<td class='delete'><a href='deleteUser.php?id=" . htmlspecialchars($row['id']) . "'>DELETE</a></td>";
+                     echo "<td class='promote'><a href='deleteUser.php?id=" . htmlspecialchars($row['id']) . "'>PROMOTE</a></td>";
+                     echo "</tr>";
+                  }
+               } else {
+                  echo "<tr><td colspan='5'>No users found.</td></tr>";
+               }
+               ?>
+
                <tr>
-                  <td class="people">
-                     <img src="img/person1.jpg" alt="">
-                     <div class="peopleDescription">
-                        <h5>John Doe</h5>
-                        <p>john@example.com</p>
-                     </div>
+                  <td class="id">1</td>
+                  <td class="name">
+                     John Doe
                   </td>
 
-                  <td class="peopleTitle">
-                     <h5>Software Engineer</h5>
-                     <p>Web dev</p>
+                  <td class="email">
+                     username@email.com
                   </td>
 
-                  <td class="peopleRole">
-                     <p>Admin</p>
+                  <td class="phone">
+                     123-456-7890
                   </td>
 
-                  <td class="edit"><a href="">Edit</a></td>
+                  <td class="delete"><a href="deleteUser.php">DELETE</a></td>
                </tr>
             </tbody>
          </table>

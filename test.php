@@ -1,51 +1,16 @@
 <?php
 
-//start session
+include('userdb.php');
 
-session_start();
+$query = "SELECT * FROM users";
+$result = mysqli_query($conn, $query);
+$userRows = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-
-
-//check if user is logged in
-
-if(!isset($_SESSION["loggedin"])||$_SESSION["loggedin"]!==true){
-
-    header("Location: login.html");
-
-    exit;
-
+foreach ($userRows as $row){
+    echo "<p>User ID: " . $row['id'] . "</p>";
+    echo "<p>Name: " . $row['name'] . "</p>";
+    echo "<p>Surname: " . $row['surname'] . "</p>";
+    echo "<p>Email: " . $row['email'] . "</p>";
+    echo "<p>Phone Number: " . $row['phoneNumber'] . "</p>";
+    echo "<hr>";
 }
-
-?>
-
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Welcome</title>
-
-    <link rel="stylesheet" href="styles.css">
-
-</head>
-
-<body>
-
-    <div class="container">
-
-        <h2>Welcome, <?php echo $_SESSION["username"]; ?>!</h2>
-
-        <p>You have successfully logged in.</p>
-
-        <a href="logout.php"> <button>Logout</button> </a>
-
-    </div>
-
-</body>
-
-</html>

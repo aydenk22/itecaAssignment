@@ -279,3 +279,35 @@ tbody tr {
       border-collapse: collapse;
    }
 }
+
+.users {
+   width: 94%;
+   margin: 30px 0 30px 30px;
+   overflow: auto;
+   background-color: white;
+   border-radius: 8px;
+}
+
+.users .id {
+   width: 50px;
+   text-align: center;
+}
+
+.users tbody tr{
+   padding: 10px 15px;
+   background-color: white;
+}
+
+.delete a {
+   text-decoration: none;
+   font-size: 14px;
+   color: rgb(231, 93, 93);
+   font-weight: 600;
+}
+
+.promote a {
+   text-decoration: none;
+   font-size: 14px;
+   color: rgb(26, 145, 181);
+   font-weight: 600;
+}
