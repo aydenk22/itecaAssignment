@@ -13,6 +13,7 @@ session_start();
    <title>Document</title>
    <link rel="stylesheet" href="adminStyles.css">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
    <section id="menu">
@@ -31,9 +32,11 @@ session_start();
 
    <section id="interface">
       <div class="navBar">
-         <div>
-            <i class="bi bi-list"></i>
-            <h3>Admin Panel</h3>
+
+         <div class="n1">
+            <div>
+               <i id="menuButton" class="bi bi-list"></i>
+            </div>
          </div>
          <div class="profile">
             <a href="#"><i class="bi bi-person-circle"></i></a>
@@ -107,5 +110,12 @@ session_start();
          </table>
       </div>
    </section>
+
+   <script>
+      $('#menuButton').click(function(){
+         $('#menu').toggleClass('active');
+      })
+   </script>
+
 </body>
 </html>
