@@ -1,0 +1,220 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+   width: 100%;
+   background-color: rgb(211, 249, 181);
+   position: relative;
+   display: flex;
+}
+
+#menu {
+   background-color: rgb(85, 80, 92);
+   width: 300px;
+   height: 100%;
+   position: fixed;
+   top: 0;
+   left: 0;
+}
+
+#menu .logo img{
+   width: 40px;
+}
+
+#menu .logo{
+   display: flex;
+   align-items: center;
+   color: rgb(254, 252, 251);
+   padding: 30px 0 0 30px;
+}
+
+#menu .items{
+   margin-top: 40px;
+}
+
+#menu .items li {
+   list-style: none;
+   padding: 15px 0;
+   transition: 0.3s ease;
+}
+
+#menu .items li:hover {
+   background-color: rgb(73, 69, 77);
+   cursor: pointer;
+}
+
+#menu .items li:nth-child(1){
+   border-left: 4px solid rgb(254, 252, 251);
+}
+
+#menu .items li i {
+   color: rgb(254, 252, 251);
+   width: 30px;
+   height: 30px;
+   line-height: 30px;
+   text-align: center;
+   font-size: 14px;
+   margin: 0 10px 0 25px;
+}
+
+#menu .items li:hover i,
+#menu .items li:hover a{
+   color: white;
+}
+
+#menu .items li a {
+   color: rgb(254, 252, 251);
+   text-decoration: none;
+   font-weight: 300px;
+}
+
+#interface {
+   width: calc(100% - 300px);
+   margin-left: 300px;
+   position: relative;
+}
+
+#interface .navBar {
+   width: 100%;
+   height: 60px;
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   background-color: white;
+   padding: 15px 30px;
+   border-bottom: 3px solid rgb(26, 145, 181);
+}
+
+#interface .navBar .profile i{
+   width: 30px;
+   height: 30px;
+   font-size: 20px;
+   font-weight: 400;
+   color: rgb(85, 80, 92);
+}
+
+.iName{
+   color: rgb(85, 80, 92);
+   padding: 30px 30px 0 30px;
+   font-size: 24px;
+   font-weight: 700;
+}
+
+.values {
+   padding: 30px 30px 0 30px;
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   align-items: center;
+}
+
+.values .valueBox{
+   background-color: white;
+   width: 235px;
+   padding: 16px 20px;
+   border-radius: 5px;
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+}
+
+.values .valueBox i {
+   font-size: 25px;
+   width: 60px;
+   height: 60px;
+   line-height: 60px;
+   border-radius: 50%;
+   text-align: center;
+   color: white;
+   margin-right: 15px;
+}
+
+.values .valueBox:nth-child(1) i {
+   background-color: rgb(26, 145, 181);
+}
+.values .valueBox:nth-child(2) i {
+   background-color: rgb(151, 97, 221);
+}
+.values .valueBox:nth-child(3) i {
+   background-color: rgb(231, 93, 93);
+}
+.values .valueBox:nth-child(4) i {
+   background-color: rgb(3, 71, 92);
+}
+
+.values .valueBox h3 {
+   font-size: 18px;
+   font-weight: 600;
+}
+
+.values .valueBox span{
+   font-size: 15px;
+   color: rgb(85, 80, 92);
+}
+
+.board{
+   width: 94%;
+   margin: 30px 0 30px 30px;
+   overflow: auto;
+   background-color: white;
+   border-radius: 8px;
+
+}
+
+.board img{
+   width: 45px;
+   height: 45px;
+   object-fit: cover;
+   border-radius: 50%;
+   margin-right: 15px;
+}
+
+.board h5 {
+   font-weight: 600;
+   font-size: 14px;
+}
+.board p {
+   font-weight: 400;
+   font-size: 13px;
+   color: rgb(85, 80, 92);
+}
+
+.board .people {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   text-align: start;
+}
+
+table {
+   width: 100%;
+   border-collapse: collapse;
+}
+
+tr {
+   border-bottom: 1px solid rgb(206, 206, 206);
+}
+
+thead td {
+   font-size: 14px;
+   text-transform: uppercase;
+   font-weight: 400;
+   background-color: rgb(254, 252, 251);
+   text-align: start;
+   padding: 15px;
+}
+
+tbody tr {
+   padding: 10px 15px;
+}
+
+.edit a{
+   text-decoration: none;
+   font-size: 14px;
+   color: rgb(6, 52, 179);
+   font-weight: 600;
+}

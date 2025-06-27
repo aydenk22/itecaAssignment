@@ -50,6 +50,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
          $_SESSION['email'] = $email;
          $_SESSION['userID'] = $user['id'];
 
+         $query = "SELECT isAdmin FROM users WHERE email = '$email'";
+         $result = mysqli_query($conn, $query);
+         $row = mysqli_fetch_assoc($result);
+
+         if ($row['isAdmin'] != 0){
+            $_SESSION['isAdmin'] = true;
+         } else {
+            $_SESSION['isAdmin'] = false;
+         }
+
          header("Location: homepage.php");
       } else{
          echo "Error: Incorrect password";
