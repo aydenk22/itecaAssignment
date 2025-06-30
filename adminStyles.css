@@ -298,7 +298,8 @@ tbody tr {
    background-color: white;
 }
 
-.delete a {
+.delete a,
+.demote a {
    text-decoration: none;
    font-size: 14px;
    color: rgb(231, 93, 93);

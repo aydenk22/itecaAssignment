@@ -16,12 +16,13 @@ $userID = $_SESSION['userID'];
 
 <body>
 
-   <section class="header">
+     <section class="header">
       <a href="homepage.php" class="logo">Shop-A-Lot</a>
       <div>
          <ul class="navBar">
             <li><a href="homepage.php">Home</a></li>
             <li><a href="add.php">Sell a product?</a></li>
+            <li><a href="shop.php">Shop</a></li>
             <li><a href="logout.php">Logout</a></li>
             <li><a href="account.php"><i class="bi bi-person"></i></a></li>
             <li><a href="cart.php"><i class="bi bi-bag"></i></a></li>
@@ -57,13 +58,26 @@ if (isset($_POST['payButton'])) {
    $result = mysqli_query($conn, $query);
    $user = mysqli_fetch_assoc($result);
    $cartID = $user['cartID'];
+
+   $query = "SELECT * FROM cart WHERE id = '$cartID'";
+   $result = mysqli_query($conn, $query);
+   $cart = mysqli_fetch_assoc($result);
+   $cartItems = json_decode($cart['cartItems'], true);
+
+   $query = "INSERT INTO orders (userID, orderStatus, items, total) VALUES ('$userID', 'Completed', '$cart[cartItems]', '$cart[total]')";
+   mysqli_query($conn, $query);
+
    $newCartItems = array();
    $newCartItems = json_encode($newCartItems, true);
 
    $query = "UPDATE cart SET cartItems = '$newCartItems', total = 0 WHERE id = '$cartID'";
    mysqli_query($conn, $query);
 
-   header('Location: homepage.php');
+   $query = "DELETE FROM item_bundle WHERE cartID = '$cartID'";
+   mysqli_query($conn, $query);
+   
+   
    echo "<script>alert('Payment Successful');</script>";
+   header('Location: homepage.php');
    
 }

@@ -101,31 +101,29 @@ foreach ($orderRows as $row) {
             <thead>
                <tr>
                   <td>Name</td>
-                  <td>Title</td>
-                  <td>Role</td>
+                  <td>Email</td>
+                  <td>Number</td>
                </tr>
             </thead>
             <tbody>
-               <tr>
-                  <td class="people">
-                     <img src="img/person1.jpg" alt="">
-                     <div class="peopleDescription">
-                        <h5>John Doe</h5>
-                        <p>john@example.com</p>
-                     </div>
-                  </td>
 
-                  <td class="peopleTitle">
-                     <h5>Software Engineer</h5>
-                     <p>Web dev</p>
-                  </td>
+               <?php
+                  foreach ($userRows as $row) {
+                     if ($row['isAdmin'] == 0) {
+                        continue; // Skip admin users
+                     }
 
-                  <td class="peopleRole">
-                     <p>Admin</p>
-                  </td>
+                     echo "<tr>";
+                     echo "<td class='name'>" . htmlspecialchars($row['name']) . "</td>";
+                     echo "<td class='email'>" . htmlspecialchars($row['email']) . "</td>";
+                     echo "<td class='phone'>" . htmlspecialchars($row['phoneNumber']) . "</td>";
+                     echo "<td class='delete'><a href='deleteUser.php?id=" . htmlspecialchars($row['id']) . "'>DELETE</a></td>";
+                     echo "<td class='demote'><a href='demoteUser.php?id=" . htmlspecialchars($row['id']) . "'>DEMOTE</a></td>";
+                     echo "</tr>";
 
-                  <td class="edit"><a href="">Edit</a></td>
-               </tr>
+                  }
+
+               ?>
             </tbody>
          </table>
       </div>

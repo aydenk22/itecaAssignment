@@ -207,7 +207,48 @@ body{
 
 /* Account page */
 
+#accountSection{
+   display: flex;
+   width: 100%;
+   padding: 20px;
+   background-color: rgb(254, 252, 251);
+}
+
 #accountSection .h2{
    text-align: center;
    color: blue;
+}
+
+#accountDetails .accountRow{
+   display: flex;
+   justify-content: space-between;
+   border-bottom: 1px solid rgb(112, 112, 112);
+   padding: 10px 10px;
+}
+
+#accountDetails .accountRow h4{
+   color: rgb(85,80,92);
+}
+
+#accountSection .categoryBar{
+   width: 20%;
+   border: 1px solid rgb(85,80,92);
+   margin: 5px;
+   height: 100%;
+   top: 0;
+   left: 0;
+}
+
+#orderContainer{
+   width: 100%;
+   padding: 20px;
+}
+
+#orderContainer .images{
+   display: flex;
+}
+
+#orderContainer .images img{
+   width: 100px;
+   margin-right: 20px;
 }

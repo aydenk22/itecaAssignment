@@ -70,13 +70,17 @@ $userRows = mysqli_fetch_all($result, MYSQLI_ASSOC);
                <?php
                if ($userRows) {
                   foreach ($userRows as $row) {
+
+                     if ($row['isAdmin'] == 1) {
+                        continue; // Skip admin users
+                     }
                      echo "<tr>";
                      echo "<td class='id'>" . htmlspecialchars($row['id']) . "</td>";
                      echo "<td class='name'>" . htmlspecialchars($row['name']) . "</td>";
                      echo "<td class='email'>" . htmlspecialchars($row['email']) . "</td>";
                      echo "<td class='phone'>" . htmlspecialchars($row['phoneNumber']) . "</td>";
                      echo "<td class='delete'><a href='deleteUser.php?id=" . htmlspecialchars($row['id']) . "'>DELETE</a></td>";
-                     echo "<td class='promote'><a href='deleteUser.php?id=" . htmlspecialchars($row['id']) . "'>PROMOTE</a></td>";
+                     echo "<td class='promote'><a href='promoteUser.php?id=" . htmlspecialchars($row['id']) . "'>PROMOTE</a></td>";
                      echo "</tr>";
                   }
                } else {

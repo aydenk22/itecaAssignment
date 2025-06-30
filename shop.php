@@ -42,13 +42,14 @@ include('userdb.php');
       
       <div class="featuredProducts">
          <div class="productsTitle" >
-         <h2>Featured Products</h2>
+         <h2>View all our products</h2>
          </div>
        <div class="products" id="products">
          <?php
 
-         $sql = 'SELECT * FROM products ORDER BY RAND() LIMIT 6';
+         $sql = 'SELECT * FROM products';
          $result = mysqli_query($conn, $sql);
+         $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
          $ids = [];
 

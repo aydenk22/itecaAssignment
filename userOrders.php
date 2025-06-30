@@ -3,9 +3,9 @@ session_start();
 include('userdb.php');
 
 $userID = $_SESSION['userID'];
-$query = "SELECT * FROM users WHERE id = '$userID'";
+$query = "SELECT * FROM orders WHERE userID = '$userID'";
 $result = mysqli_query($conn, $query);
-$user = mysqli_fetch_assoc($result);
+$orders = mysqli_fetch_assoc($result);
 ?>
 
 <!DOCTYPE html>
@@ -43,32 +43,18 @@ $user = mysqli_fetch_assoc($result);
          </ul>
       </div>
       
-      <div class="featuredProducts">
+      <div class="userOrders">
          <div class="productsTitle" >
-         <h2>Account</h2>
+         <h2>Orders</h2>
          </div>
-
-         <div class="accountDetails" id="accountDetails">
-            <div class="accountRow">
-               <div>
-                  <h3>Your Name:</h3>
-                  <h4>Ayden Kiewiets</h4>
-               </div>
-               <button class="accountRowButton">Edit</button>
+         <div id="orderContainer" width="100%">
+            <div>
+               <h3>Status: Completed</h3>
+               <h4>Total: R23 098</h4>
             </div>
-            <div class="accountRow">
-               <div>
-                  <h3>Email Address:</h3>
-                  <h4>aydenkiewiets22@gmail.com</h4>
-               </div>
-               <button class="accountRowButton">Edit</button>
-            </div>
-            <div class="accountRow">
-               <div>
-                  <h3>Phone Number:</h3>
-                  <h4>068 154 1267</h4>
-               </div>
-               <button class="accountRowButton">Edit</button>
+            <div class="images">
+               <img src="img/6843efd73d06d2.35309125.jpg" alt="">
+               <img src="img/6843efd73d06d2.35309125.jpg" alt="">
             </div>
          </div>
        <div class="products" id="products">
