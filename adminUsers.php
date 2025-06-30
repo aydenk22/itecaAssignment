@@ -28,7 +28,7 @@ $userRows = mysqli_fetch_all($result, MYSQLI_ASSOC);
       <div class="items">
          <li><i class="bi-speedometer2"></i><a href="adminPanel.php">Dashboard</a></li>
          <li><i class="bi bi-table"></i><a href="adminUsers.php">Users</a></li>
-         <li><i class="bi bi-bar-chart-fill"></i><a href="#">Products</a></li>
+         <li><i class="bi bi-bar-chart-fill"></i><a href="adminProducts.php">Products</a></li>
          <li><i class="bi-box-arrow-right"></i><a href="logout.php">Logout</a></li>
       </div>
       
@@ -47,13 +47,11 @@ $userRows = mysqli_fetch_all($result, MYSQLI_ASSOC);
          </div>
       </div>
 
-      <h3 class="iName">Tables</h3>
+      <h3 class="iName">Users</h3>
 
       <div class="values">
          
       </div>
-
-      <h3>Users</h3>
 
       <div class="users">
          <table width="100%">
@@ -110,9 +108,6 @@ $userRows = mysqli_fetch_all($result, MYSQLI_ASSOC);
    </section>
 
    <script>
-      $('#menuButton').click(function(){
-         $('#menu').toggleClass('active');
-      })
    </script>
 
 </body>

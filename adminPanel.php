@@ -44,7 +44,7 @@ foreach ($orderRows as $row) {
       <div class="items">
          <li><i class="bi-speedometer2"></i><a href="adminPanel.php">Dashboard</a></li>
          <li><i class="bi bi-table"></i><a href="adminUsers.php">Users</a></li>
-         <li><i class="bi bi-bar-chart-fill"></i><a href="#">Products</a></li>
+         <li><i class="bi bi-bar-chart-fill"></i><a href="adminProducts.php">Products</a></li>
          <li><i class="bi-box-arrow-right"></i><a href="logout.php">Logout</a></li>
       </div>
       
