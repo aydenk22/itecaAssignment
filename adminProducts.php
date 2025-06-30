@@ -27,7 +27,7 @@ $userRows = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
       <div class="items">
          <li><i class="bi-speedometer2"></i><a href="adminPanel.php">Dashboard</a></li>
-         <li><i class="bi bi-table"></i><a href="users.php">Users</a></li>
+         <li><i class="bi bi-table"></i><a href="adminUsers.php">Users</a></li>
          <li><i class="bi bi-bar-chart-fill"></i><a href="#">Products</a></li>
          <li><i class="bi-box-arrow-right"></i><a href="logout.php">Logout</a></li>
       </div>
